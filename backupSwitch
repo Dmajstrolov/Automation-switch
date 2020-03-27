@@ -1,0 +1,153 @@
+show run
+Building configuration...
+
+Current configuration : 1382 bytes
+!
+version 12.1
+no service pad
+service timestamps debug uptime
+service timestamps log uptime
+service password-encryption
+!
+hostname SW1_Praktik
+!
+enable secret 5 $1$zQLt$br/61CynQr2rrH39NuF3z.
+!
+ip subnet-zero
+!
+no ip domain-lookup
+ip ssh time-out 120
+ip ssh authentication-retries 3
+!
+spanning-tree mode pvst
+no spanning-tree optimize bpdu transmission
+spanning-tree extend system-id
+!
+!
+!
+!
+interface FastEthernet0/1
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+ --More--         interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+ --More--         interface Vlan1
+ ip address 192.168.1.25 255.255.255.0
+ no ip route-cache
+!
+ip default-gateway 192.168.1.1
+ip http server
+banner motd ^CHello world^C
+!
+line con 0
+line vty 0 4
+ exec-timeout 15 0
+ password 7 14141B180F0B
+ login
+line vty 5 15
+ login
+!
+!
+end
+
+SW1_Praktik#show vlan
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/1, Fa0/2, Fa0/3, Fa0/4, Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10, Fa0/11, Fa0/12, Fa0/13, Fa0/14, Fa0/15
+                                                Fa0/16, Fa0/17, Fa0/18, Fa0/19, Fa0/20, Fa0/21, Fa0/22
+                                                Fa0/23, Fa0/24
+1002 fddi-default                     act/unsup 
+1003 token-ring-default               act/unsup 
+1004 fddinet-default                  act/unsup 
+1005 trnet-default                    act/unsup 
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0   
+1002 fddi  101002     1500  -      -      -        -    -        0      0   
+1003 tr    101003     1500  -      -      -        -    -        0      0   
+1004 fdnet 101004     1500  -      -      -        ieee -        0      0   
+1005 trnet 101005     1500  -      -      -        ibm  -        0      0   
+
+Remote SPAN VLANs
+------------------------------------------------------------------------------
+
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+SW1_Praktik#  show ip n interface bried f
+Interface                  IP-Address      OK? Method Status                Protocol
+Vlan1                      192.168.1.25    YES NVRAM  up                    up      
+FastEthernet0/1            unassigned      YES unset  down                  down    
+FastEthernet0/2            unassigned      YES unset  down                  down    
+FastEthernet0/3            unassigned      YES unset  down                  down    
+FastEthernet0/4            unassigned      YES unset  down                  down    
+FastEthernet0/5            unassigned      YES unset  down                  down    
+FastEthernet0/6            unassigned      YES unset  down                  down    
+FastEthernet0/7            unassigned      YES unset  down                  down    
+FastEthernet0/8            unassigned      YES unset  down                  down    
+FastEthernet0/9            unassigned      YES unset  down                  down    
+FastEthernet0/10           unassigned      YES unset  down                  down    
+FastEthernet0/11           unassigned      YES unset  down                  down    
+FastEthernet0/12           unassigned      YES unset  down                  down    
+FastEthernet0/13           unassigned      YES unset  down                  down    
+FastEthernet0/14           unassigned      YES unset  down                  down    
+FastEthernet0/15           unassigned      YES unset  down                  down    
+FastEthernet0/16           unassigned      YES unset  down                  down    
+FastEthernet0/17           unassigned      YES unset  down                  down    
+FastEthernet0/18           unassigned      YES unset  down                  down    
+FastEthernet0/19           unassigned      YES unset  down                  down    
+FastEthernet0/20           unassigned      YES unset  down                  down    
+FastEthernet0/21           unassigned      YES unset  down                  down    
+FastEthernet0/22           unassigned      YES unset  down                  down    
+FastEthernet0/23           unassigned      YES unset  up                    up      
+FastEthernet0/24           unassigned      YES unset  down                  down    
+SW1_Praktik#  
